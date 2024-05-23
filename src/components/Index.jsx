@@ -28,7 +28,7 @@ const Index = () => {
       <div className="cardMain flex justify-center items-center lg:gap-x-4 gap-y-3 lg:gap-y-0 flex-wrap ">
         {data.map((val) => (
           <>
-            <div className="cardHolder mt-5 p-4  w-[50vmin] bg-[#ffffff] shadow-2xl flex flex-col justify-center items-center">
+            <div className="cardHolder mt-5 p-4  w-[60vw] lg:w-[50vmin] bg-[#ffffff] shadow-2xl flex flex-col justify-center items-center">
               <div className="card h-[25vmin] w-[40vmin] ">
                 <div className="h-[21vmin] w-[40vmin] flex flex-col justify-center items-center  ">
                   <img
@@ -37,7 +37,7 @@ const Index = () => {
                   ></img>
                 </div>
               </div>
-              <p className="text-xl font-bold font-sans pl-2 pr-2 text-black">
+              <p className="text-md lg:text-xl font-bold font-sans pl-2 pr-2 text-black">
                 Category : {val.name}
               </p>
               <button className="bg-[#FFBF00] p-2 font-medium text-black mt-4 font-sans">
