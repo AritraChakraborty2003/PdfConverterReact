@@ -37,7 +37,7 @@ const Header = () => {
           )}
         </div>
         <div className="lg:hidden">
-          <div className="iconHolder h-[15vmin] md:h-[10vmin] flex items-center space-x-5 text-xl font-medium">
+          <div className="iconHolder h-[15vmin] md:h-[10vmin] flex items-center space-x-6 text-xl font-medium">
             <img
               src="./ham.png"
               height={30}

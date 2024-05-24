@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import "./login.css";
 const FirstLogin = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [uid, setUid] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,25 +23,43 @@ const FirstLogin = () => {
     if (uid === "PT1") {
       if (email === "aritra.chakraborty203@gmail.com") {
         if (password === "Technical2024") {
-          localStorage.setItem("user", "adminU");
+          console.log("Hi");
+          localStorage.setItem("user", "adminU1");
           navigate("/Index");
         } else {
+          alert("Invalid Credentials");
           document.getElementById("uid").value = "";
           document.getElementById("email").value = "";
           document.getElementById("password").value = "";
-          alert("Invalid Credentials");
         }
       } else {
+        alert("Invalid Credentials");
         document.getElementById("uid").value = "";
         document.getElementById("email").value = "";
         document.getElementById("password").value = "";
+      }
+    } else if (uid === "PT31") {
+      if (email === "test@gmail.com") {
+        if (password === "internTech2024") {
+          localStorage.setItem("user", "adminU3");
+          navigate("/Index");
+        } else {
+          alert("Invalid Credentials");
+          document.getElementById("uid").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("password").value = "";
+        }
+      } else {
         alert("Invalid Credentials");
+        document.getElementById("uid").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
       }
     } else {
+      alert("Invalid Credentials");
       document.getElementById("uid").value = "";
       document.getElementById("email").value = "";
       document.getElementById("password").value = "";
-      alert("Invalid Credentials");
     }
   };
   return (
@@ -60,31 +80,43 @@ const FirstLogin = () => {
           <form className="flex flex-col p-6 gap-y-4">
             <input
               type="text"
-              className="w-[65vmin] lg:w-[50vmin] ml-2 bg-slate-200 p-2"
+              className="w-[70vmin] lg:w-[50vmin] ml-2 bg-slate-200 p-2"
               placeholder="Enter your userId"
               id="uid"
               onChange={(e) => setUid(e.target.value)}
             ></input>
             <input
               type="text"
-              className="w-[65vmin] lg:w-[50vmin] ml-2 bg-slate-200 p-2"
+              className="w-[70vmin] lg:w-[50vmin] ml-2 bg-slate-200 p-2"
               placeholder="Enter your email"
               id="email"
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <input
-              type="text"
-              className="w-[65vmin] lg:w-[50vmin] ml-2 bg-slate-200 p-2"
-              placeholder="Enter password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-            <p>
-              <a href="/ForgotPassword" className="ml-2">
-                Forgot Password?
-              </a>
-            </p>
+            <div className="flex">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="w-[65vmin] lg:w-[50vmin] ml-2 bg-slate-200 p-2"
+                placeholder="Enter password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
 
+              <img
+                src="./rp.png"
+                id="showicon"
+                height={50}
+                width={50}
+                onClick={() => {
+                  if (showPassword === false) {
+                    setShowPassword(true);
+                    document.getElementById("showicon").src = "./sp.png";
+                  } else {
+                    setShowPassword(false);
+                    document.getElementById("showicon").src = "./rp.png";
+                  }
+                }}
+              ></img>
+            </div>
             <button
               className="bg-black text-white p-2 w-24"
               onClick={SubmitChange}
