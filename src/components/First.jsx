@@ -2,9 +2,11 @@
 
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable no-unreachable */
 const First = () => {
+  const navigate = useNavigate();
   const myStyle = {
     background: "orange",
     font: "poppins",
@@ -30,7 +32,12 @@ const First = () => {
           <p className="text-[3vmin] lg:text-[2.75vmin] text-black pb-3 font-normal">
             ( Connecting entrpreneurs evolving Business )
           </p>
-          <button className="bg-[#ff1010]  text-white text-2xl p-2 w-[30vmin] md:w-[20vmin]">
+          <button
+            className="bg-[#ff1010]  text-white text-2xl p-2 w-[30vmin] md:w-[20vmin]"
+            onClick={() => {
+              navigate("/FirstLogin");
+            }}
+          >
             <Link to="/FirstLogin">Login</Link>
           </button>
         </div>
