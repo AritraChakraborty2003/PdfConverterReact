@@ -24,7 +24,7 @@ const Index = () => {
       {data.length === 0 && (
         <>
           <Header />
-          <div className="h-[100vh] w-[100vw] bg-[#FFA62F] flex justify-center items-center">
+          <div className="h-[calc(100vh-15vmin)] lg:h-[calc(100vh-10vmin)] w-[100vw] bg-[#FFA62F] flex justify-center items-center">
             <p className="text-black text-3xl lg:text-5xl p-3 font-bold">
               Please Wait... 🙏🙏🙏
             </p>
@@ -64,7 +64,10 @@ const Index = () => {
                           ></img>
                         </div>
                       </div>
-                      <p className="text-md lg:text-xl font-medium font-sans pl-2 pr-2 text-black">
+                      <p className=" hidden md:block text-lg lg:text-xl font-medium font-sans pl-2 pr-2 text-black">
+                        Tool: {val.name}
+                      </p>
+                      <p className=" block md:hidden text-md lg:text-xl font-medium font-sans pl-2 pr-2 text-black">
                         {val.name}
                       </p>
                       <button className="bg-[#FFBF00] p-2 font-medium text-black mt-4 font-sans">

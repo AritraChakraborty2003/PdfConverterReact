@@ -7,8 +7,8 @@ const Header = () => {
   const [notHidden, setnotHidden] = useState(false);
   return (
     <>
-      <div className="w-full h-[15vmin] lg:h-[10vmin] bg-black text-white flex overflow-hidden">
-        <div className="iconHolder h-[15vmin] lg:h-[10vmin] flex items-center space-x-4 ">
+      <div className="w-full h-[15vmin] md:h-[10vmin] bg-black text-white flex overflow-hidden">
+        <div className="iconHolder h-[15vmin] md:h-[10vmin] flex items-center space-x-4 ">
           <h1 className="font-extrabold text-2xl ml-4">
             <Link to="/">LV</Link>
           </h1>
@@ -37,7 +37,7 @@ const Header = () => {
           )}
         </div>
         <div className="lg:hidden">
-          <div className="iconHolder h-16 flex items-center space-x-5 text-xl font-medium">
+          <div className="iconHolder h-[15vmin] md:h-[10vmin] flex items-center space-x-5 text-xl font-medium">
             <img
               src="./ham.png"
               height={30}
