@@ -44,14 +44,14 @@ const HiringDoc = () => {
     doc.text(`1. Position: Web Developer Intern`, 20, 71);
     doc.text(`2. mode: Online`, 20, 81);
     doc.text(`3. Compensation: unpaid`, 20, 91);
-    doc.text(`4. Reporting To: Aritra Chakraborty,Technical Head`, 20, 101);
+    doc.text(`4. Reporting To: Aritra Chakraborty ( Technical Head )`, 20, 101);
     doc.text(`5. Joining Date: 25th June 2024`, 20, 111);
     doc.text(`6. Timing : Flexible`, 20, 121);
     doc.text(`7. Hours Neeed : 18 hours/week(5 days Week)`, 20, 131);
     doc.text(`8. Duration : 6 months`, 20, 141);
     doc.setFont("serif", "normal");
     doc.text(
-      `The main roles & responsibilites for the web development intern role are:`,
+      `The main roles & responsibilites for the web development intern role are:-`,
       20,
       151
     );
@@ -61,7 +61,7 @@ const HiringDoc = () => {
       20,
       161
     );
-    doc.text(`2. Communicating with team as per project requirement`, 20, 171);
+    doc.text(`2. Communicating with team as per project requirements`, 20, 171);
     doc.text(
       `3. Developing robust APIs and integrating its data in the frontend as per the need`,
       20,
@@ -88,11 +88,12 @@ const HiringDoc = () => {
     );
     doc.setFont("serif", "normal");
     doc.setFontSize(12);
-    doc.text(`Aritra Chakraborty`, 20, 270);
-    doc.text(`( Technical Head )`, 20, 277);
-    doc.setFont("serif", "normal");
+    doc.text(`Aritra Chakraborty`, 20, 282);
     doc.setFontSize(10);
-    doc.text("Date: " + moment().format("Do MMM YYYY"), 21, 285);
+    doc.text(`( Technical Head )`, 20, 287);
+    doc.setFont("serif", "normal");
+    doc.setFontSize(9.5);
+    doc.text("Date: " + moment().format("Do MMM YYYY"), 20, 291);
 
     doc.save("unameHiringLetter.pdf");
   };
