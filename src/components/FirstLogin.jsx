@@ -92,7 +92,7 @@ const FirstLogin = () => {
               id="email"
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <div className="flex w-[65vmin] lg:w-[50vmin] bg-slate-200 ml-2">
+            <div className="flex w-[70vmin] lg:w-[50vmin] bg-slate-200 ml-2">
               <input
                 type={showPassword ? "text" : "password"}
                 className="w-[60vmin] lg:w-[45vmin] ml-2 bg-slate-200 p-2"
