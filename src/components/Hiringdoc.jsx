@@ -315,8 +315,8 @@ const HiringDoc = () => {
                         id="category"
                         className="w-11/12 bg-slate-200 p-2 mt-1"
                       >
-                        <option value="Technical Head">Technical</option>
-                        <option value="Management Head">Management</option>
+                        <option value="Technical">Technical</option>
+                        <option value="Management">Management</option>
                       </select>{" "}
                     </li>
                   </ul>
