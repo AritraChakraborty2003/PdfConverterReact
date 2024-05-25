@@ -71,7 +71,7 @@ const Index = () => {
                         {val.name}
                       </p>
                       <button className="bg-[#FFBF00] p-2 font-medium text-black mt-4 font-sans">
-                        <a href="/MoMForm">{val.name}</a>
+                        <a href={val.link}>{val.name}</a>
                       </button>
                     </div>
                   </>
@@ -121,7 +121,7 @@ const Index = () => {
                           {val.name}
                         </p>
                         <button className="bg-[#FFBF00] p-2 font-medium text-black mt-4 font-sans">
-                          <a href="/MoMForm">{val.name}</a>
+                          <a href={val.link}>{val.name}</a>
                         </button>
                       </div>
                     </>
