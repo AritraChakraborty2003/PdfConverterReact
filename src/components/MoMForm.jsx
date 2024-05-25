@@ -3,6 +3,7 @@ import moment from "moment";
 import { jsPDF } from "jspdf";
 import Header from "./Header";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const MoMForm = () => {
   /* For Details */
@@ -42,8 +43,6 @@ const MoMForm = () => {
   const [agenda4p3, setAgenda4P3] = useState("");
   const [agenda4p4, setAgenda4P4] = useState("");
 
-  const organizer = document.getElementById("organizer").value;
-
   const getPDF = (e) => {
     e.preventDefault();
     console.log(meetNo);
@@ -79,6 +78,7 @@ const MoMForm = () => {
     console.log(agenda4p2);
     console.log(agenda4p3);
     console.log(agenda4p4);
+    const organizer = document.getElementById("organizer").value;
     const doc = new jsPDF();
     doc.setFont("serif", "bold");
     doc.setFontSize(35);
@@ -102,13 +102,13 @@ const MoMForm = () => {
     doc.text("Agenda: ", 20, 47);
     doc.setFont("serif", "normal");
     doc.setFontSize(12);
-    doc.text("1. " + `${agenda1Heading}?`, 20, 53);
+    doc.text("1. " + `${agenda1Heading}`, 20, 53);
     doc.setFontSize(12);
     doc.text("2. " + `${agenda2Heading}`, 20, 60);
     doc.setFontSize(12);
     doc.text("3. " + `${agenda3Heading}`, 20, 67);
     doc.setFontSize(12);
-    doc.text("4. " + `${agenda4Heading}?`, 20, 74);
+    doc.text("4. " + `${agenda4Heading}`, 20, 74);
 
     doc.setFont("serif", "bold");
     doc.setFontSize(14);
@@ -140,8 +140,8 @@ const MoMForm = () => {
 
     doc.setFont("serif", "normal");
     doc.setFontSize(12);
-    doc.text(`${agenda1Descr}`, 20, 190);
-    doc.text(`1. ${agenda1p1}`, 20, 197);
+    doc.text(`${agenda3Descr}`, 20, 190);
+    doc.text(`1. ${agenda3p1}`, 20, 197);
     doc.text(`2. ${agenda2p2}`, 20, 203);
     doc.text(`3. ${agenda3p3}`, 20, 210);
     doc.text(`4. ${agenda3p4}`, 20, 217);
@@ -168,404 +168,409 @@ const MoMForm = () => {
   return (
     <>
       <Header />
-      <div className="main pb-4 pt-5   w-[100vw] bg-[#FFA62F] flex justify-center items-center">
-        <div className="mt-10 lg:mt-10 formArea bg-white w-[97vw] lg:w-[90vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
-          <div className="header">
-            <p className="text-[5vmin] font-bold  mt-2">
-              Please Fill the details for MoM report
-            </p>
-          </div>
-          <form>
-            <div className="mt-10 lg:mt-5 formArea bg-white w-[95vw] lg:w-[90vw]  lg:p-2   flex  justify-center items-center flex-wrap">
-              <div className="left pb-1 w-[97vw]  lg:w-[42vw] ">
-                <ul className="flex gap-y-4 flex-col">
-                  <li>
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Meeting No..."
-                      onChange={(e) => setmeetNo(e.target.value)}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Meeting Title..."
-                      onChange={(e) => setTitle(e.target.value)}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Meeting Category..."
-                      onChange={(e) => setCategory(e.target.value)}
-                    ></input>
-                  </li>
-                  <li>
-                    Organized By{" "}
-                    <select
-                      class="organizer"
-                      id="organizer"
-                      className="w-11/12 bg-slate-200 p-2 mt-1"
-                    >
-                      <option value="Abhishek Kr. Pandey (Management Head)">
-                        Management Head
-                      </option>
-                      <option value="Aritra Chakraborty (Technical Head)">
-                        Technical Head
-                      </option>
-                    </select>{" "}
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda1 Heading..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda1Heading(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda1 Descr in 20 words..."
-                      onChange={(e) => {
-                        setAgenda1Descr(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda1 point1 in 20 words..."
-                      onChange={(e) => {
-                        setAgenda1P1(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda1 point2 in 20 words..."
-                      onChange={(e) => {
-                        setAgenda1P2(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda1 point3 in 20 words..."
-                      onChange={(e) => {
-                        setAgenda1P3(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda1 point4 in 20 words..."
-                      onChange={(e) => {
-                        setAgenda1P4(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda2 Heading..."
-                      onChange={(e) => {
-                        setAgenda2Heading(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda2 Descr in 20 words..."
-                      onChange={(e) => {
-                        setAgenda2Descr(e.target.value);
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda2 point1 in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda2P1(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda2 point2 in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda2P2(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                </ul>
-              </div>
-              <div className="right pb-1 w-[97vw]  lg:w-[42vw] ">
-                <ul className="flex gap-y-4 flex-col">
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda2 point3  in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda2P3(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda2 point4  in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda2P4(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda3 Heading..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda3Heading(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda3 Descr in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda3Descr(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda3 point1 in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda3P1(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda3 point2 in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda3P2(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda3 point3  in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda3P3(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda3 point4  in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda3P4(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda4 Heading..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda4Heading(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda4 Descr in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda4Descr(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda4 point1 in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda4P1(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda4 point2 in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda4P2(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda4 point3  in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda4P3(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                  <li>
-                    {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
-                      placeholder="Agenda4 point4  in 20 words..."
-                      onChange={(e) => {
-                        if (e.target.value.split(" ").length <= 22) {
-                          setAgenda4P4(e.target.value);
-                        } else {
-                          alert("Please make it in 22 word");
-                        }
-                      }}
-                    ></input>
-                  </li>
-                </ul>
-              </div>
+      <div className="bg-[#FFA62F] ">
+        <button className="bg-slate-200 mt-2 ml-2 p-2">
+          <Link to="/Index">Go Back</Link>
+        </button>
+        <div className="main pb-4 pt-5   w-[100vw] bg-[#FFA62F] flex justify-center items-center">
+          <div className="mt-10 lg:mt-10 formArea bg-white w-[97vw] lg:w-[90vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
+            <div className="header">
+              <p className="text-[5vmin] font-bold  mt-2">
+                Please Fill the details for MoM report
+              </p>
             </div>
+            <form>
+              <div className="mt-10 lg:mt-5 formArea bg-white w-[95vw] lg:w-[90vw]  lg:p-2   flex  justify-center items-center flex-wrap">
+                <div className="left pb-1 w-[97vw]  lg:w-[42vw] ">
+                  <ul className="flex gap-y-4 flex-col">
+                    <li>
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Meeting No..."
+                        onChange={(e) => setmeetNo(e.target.value)}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Meeting Title..."
+                        onChange={(e) => setTitle(e.target.value)}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Meeting Category..."
+                        onChange={(e) => setCategory(e.target.value)}
+                      ></input>
+                    </li>
+                    <li>
+                      Organized By{" "}
+                      <select
+                        class="organizer"
+                        id="organizer"
+                        className="w-11/12 bg-slate-200 p-2 mt-1"
+                      >
+                        <option value="Abhishek Kr. Pandey (Management Head)">
+                          Management Head
+                        </option>
+                        <option value="Aritra Chakraborty (Technical Head)">
+                          Technical Head
+                        </option>
+                      </select>{" "}
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda1 Heading..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda1Heading(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda1 Descr in 20 words..."
+                        onChange={(e) => {
+                          setAgenda1Descr(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda1 point1 in 20 words..."
+                        onChange={(e) => {
+                          setAgenda1P1(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda1 point2 in 20 words..."
+                        onChange={(e) => {
+                          setAgenda1P2(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda1 point3 in 20 words..."
+                        onChange={(e) => {
+                          setAgenda1P3(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda1 point4 in 20 words..."
+                        onChange={(e) => {
+                          setAgenda1P4(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda2 Heading..."
+                        onChange={(e) => {
+                          setAgenda2Heading(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda2 Descr in 20 words..."
+                        onChange={(e) => {
+                          setAgenda2Descr(e.target.value);
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda2 point1 in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda2P1(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda2 point2 in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda2P2(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                  </ul>
+                </div>
+                <div className="right pb-1 w-[97vw]  lg:w-[42vw] ">
+                  <ul className="flex gap-y-4 flex-col">
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda2 point3  in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda2P3(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda2 point4  in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda2P4(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda3 Heading..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda3Heading(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda3 Descr in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda3Descr(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda3 point1 in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda3P1(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda3 point2 in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda3P2(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda3 point3  in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda3P3(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda3 point4  in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda3P4(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda4 Heading..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda4Heading(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda4 Descr in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda4Descr(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda4 point1 in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda4P1(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda4 point2 in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda4P2(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda4 point3  in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda4P3(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                    <li>
+                      {" "}
+                      <input
+                        type="text"
+                        className="w-11/12 bg-slate-200 p-2"
+                        placeholder="Agenda4 point4  in 20 words..."
+                        onChange={(e) => {
+                          if (e.target.value.split(" ").length <= 22) {
+                            setAgenda4P4(e.target.value);
+                          } else {
+                            alert("Please make it in 22 word");
+                          }
+                        }}
+                      ></input>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-            <div className="flex justify-center items-center mt-2">
-              <button className="bg-black text-white p-2" onClick={getPDF}>
-                Get Report
-              </button>
-            </div>
-          </form>
+              <div className="flex justify-center items-center mt-2">
+                <button className="bg-black text-white p-2" onClick={getPDF}>
+                  Get Report
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>
