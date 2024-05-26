@@ -1,4 +1,4 @@
-import moment, { duration } from "moment";
+import moment from "moment";
 import { jsPDF } from "jspdf";
 import Header from "./Header";
 import { useState } from "react";
@@ -7,14 +7,12 @@ const HiringDocEmployee = () => {
   const [uname, setuname] = useState("");
   const [joiningdate, setJoiningDate] = useState("");
   const [compensation, setCompensation] = useState("");
-  const [duration1, setDuration] = useState("");
-  const [hours, setHours] = useState("");
 
   const getPDF = (e) => {
     e.preventDefault();
     const role = document.getElementById("role").value;
     const category = document.getElementById("category").value;
-    const doc = jsPDF();
+    const doc = jsPDF("p", "mm", "a4");
     doc.setFont("serif", "bold");
     doc.setFontSize(35);
     doc.text("Venture Linked", 20, 17);
@@ -32,12 +30,13 @@ const HiringDocEmployee = () => {
       20,
       37
     );
-    doc.text(
-      `we are sure that you will definitely perform very well in our ${role} team and help our `,
-      20,
-      44
-    );
+
     if (role === "UI/UX Designer") {
+      doc.text(
+        `we are sure that you will definitely perform very well in our UI/UX team and help our `,
+        20,
+        44
+      );
       doc.text(
         `startup grow.Your skills are really very impressive and the portfolio you developed is really very`,
         20,
@@ -50,6 +49,20 @@ const HiringDocEmployee = () => {
       );
     }
     if (role === "Web Developer" || role === "Android Developer") {
+      if (role === "Web Developer") {
+        doc.text(
+          `we are sure that you will definitely perform very well in our web Development team and help our `,
+          20,
+          44
+        );
+      } else {
+        doc.text(
+          `we are sure that you will definitely perform very well in our android Development team and help our `,
+          20,
+          44
+        );
+      }
+
       doc.text(
         `startup grow.Your skills are really very impressive and the projects you developed is really very`,
         20,
@@ -61,7 +74,20 @@ const HiringDocEmployee = () => {
         58
       );
     }
-    if (role === "Marketing" || role === "Accountant") {
+    if (role === "Marketing Executive" || role === "Accountant") {
+      if (role === "Marketing Executive") {
+        doc.text(
+          `we are sure that you will definitely perform very well in our marketing team and help our `,
+          20,
+          44
+        );
+      } else {
+        doc.text(
+          `we are sure that you will definitely perform very well in our accounting team and help our `,
+          20,
+          44
+        );
+      }
       doc.text(
         `startup grow.Your skills are really very impressive and the experience you gained is really very`,
         20,
@@ -81,148 +107,173 @@ const HiringDocEmployee = () => {
     );
     doc.text(`1. Position: ${role}`, 20, 71);
     doc.text(`2. mode: Online`, 20, 81);
-    doc.text(`3. Compensation: ${compensation}`, 20, 91);
+    doc.text(`3. Compensation: Rs. ${compensation} per annum`, 20, 91);
+    doc.text(`4. type: Full-time`, 20, 101);
     if (category === "Technical") {
       doc.text(
         `4. Reporting To: Aritra Chakraborty ( Technical Head )`,
         20,
-        101
+        111
       );
     } else {
       doc.text(
         `4. Reporting To: Abhishek Kr. Pandey ( Management Head )`,
         20,
-        101
+        111
       );
     }
-    doc.text(`5. Joining Date: ${joiningdate}`, 20, 111);
-    doc.text(`6. Timing : 9.00 AM - 5.00 PM (5 days week)`, 20, 121);
+    doc.text(`5. Joining Date: ${joiningdate}`, 20, 121);
+    doc.text(`6. Timing : 9.00 AM - 5.00 PM (5 days week)`, 20, 131);
     doc.setFont("serif", "normal");
     doc.text(
-      `The main roles & responsibilites for the ${role}  role are:-`,
+      `The main roles & responsibilites for the ${role} role are:-`,
       20,
-      151
+      141
     );
-    if (role === "Web Development") {
+    if (role === "Web Developer") {
       doc.setFont("serif", "normal");
       doc.text(
         `1. Managing day to day web development updates as per needs of the project or feature`,
         20,
-        161
+        151
       );
       doc.text(
         `2. Communicating with the intern and management team as per project requirements`,
         20,
-        171
+        161
       );
       doc.text(
         `3. Develop robust APIs,updating features,resolve issues,testing,Code review of interns in the team`,
         20,
-        181
+        171
       );
       doc.text(
         `4. Working primarily on react.js for frontend devlopment and express.js,node.js and MongoDB for backend`,
         20,
-        191
+        181
       );
     }
 
-    if (role === "Android Development") {
+    if (role === "Android Developer") {
       doc.setFont("serif", "normal");
       doc.text(
         `1. Managing day to day android development updates as per needs of the project or feature`,
         20,
-        161
+        151
       );
       doc.text(
         `2. Communicating with the team and management as per project requirements`,
         20,
-        171
+        161
       );
       doc.text(
         `3. Integrating APIs,training and mentoring interns,work on updates as needed in the project`,
         20,
-        181
+        171
       );
       doc.text(
         `4. Manage techical Documentation, Review code,perform testing and handle deployment needs`,
         20,
-        191
+        181
       );
     }
 
-    if (role === "UI/UX") {
+    if (role === "UI/UX Designer") {
       doc.setFont("serif", "normal");
-      doc.text(`1. Managing day to day UI/UX updates as per needs.`, 20, 161);
+      doc.text(`1. Managing day to day UI/UX updates as per needs.`, 20, 151);
       doc.text(
         `2. Communicating with team  and management as per project requirements`,
-        20,
-        171
-      );
-      doc.text(
-        `3. Developing creative and attractive posts,banners,UI components as per need training UI/UX interns`,
-        20,
-        181
-      );
-      doc.text(
-        `4. Working primarily on canva for building the creative UI components and help to fix UX issues`,
-        20,
-        191
-      );
-    }
-    if (role === "Marketing") {
-      doc.setFont("serif", "normal");
-      doc.text(
-        `1. Managing day to day digital marketing and social media needs of the firm`,
         20,
         161
       );
       doc.text(
-        `2. Communicating with team and management as per requirements`,
+        `3. Developing creative and attractive posts,banners,UI components as per need & training UI/UX interns`,
         20,
         171
       );
       doc.text(
-        `3. Running and managing ads on social media platform for gaining users in the application`,
+        `4. Working primarily on canva for building the creative UI components and help to fix UX issues`,
         20,
         181
+      );
+    }
+    if (role === "Marketing Executive") {
+      doc.setFont("serif", "normal");
+      doc.text(
+        `1. Managing day to day digital marketing and social media needs of the firm`,
+        20,
+        151
+      );
+      doc.text(
+        `2. Communicating with team and management as per requirements`,
+        20,
+        161
+      );
+      doc.text(
+        `3. Running and managing ads on social media platform for gaining users in the application`,
+        20,
+        171
       );
       doc.text(
         `4. Regularly posting on social media platform making discussion with UI/UX team and interns.`,
         20,
+        181
+      );
+    }
+    if (role === "Accountant") {
+      doc.setFont("serif", "normal");
+      doc.text(
+        `1. Recording and documenting all payment related task of the company`,
+        20,
+        151
+      );
+      doc.text(
+        `2. Analyzing profits,costs,trends,preparing financial statements,managing payroll`,
+        20,
+        161
+      );
+      doc.text(
+        `3. Participate in GST Filling , audits and provide all the documents as needed by the CA of the firm`,
+        20,
+        171
+      );
+      doc.text(
+        `4. Managing and updating book of accounts and help in ensuring regulatory compliances of the firm`,
+        20,
+        181
+      );
+      doc.text(
+        `5. Managing all kinds of financial and accounting related tasks for the firm`,
+        20,
         191
       );
     }
-
     doc.setFont("serif", "normal");
     doc.setFontSize(12);
     if (category === "Technical") {
-      doc.text(`Aritra Chakraborty`, 20, 282);
+      doc.text(`Aritra Chakraborty`, 20, 227);
       doc.setFontSize(10);
-      doc.text(`( Technical Head )`, 20, 287);
+      doc.text(`( Technical Head )`, 20, 234);
     } else {
-      doc.text(`Abhishek Kr. Pandey`, 20, 282);
+      doc.text(`Abhishek Kr. Pandey`, 20, 227);
       doc.setFontSize(10);
-      doc.text(`( Management Head )`, 20, 287);
+      doc.text(`( Management Head )`, 20, 234);
     }
     doc.setFont("serif", "normal");
     doc.setFontSize(9.5);
-    doc.text("Date: " + moment().format("Do MMM YYYY"), 20, 291);
-
-    doc.save(`${uname}HiringLetter.pdf`);
+    doc.text("Date: " + moment().format("Do MMM YYYY"), 20, 240);
+    const uname1 = uname.split(" ");
+    const unameRes = uname1.join("");
+    doc.save(`${unameRes}_HiringLetter.pdf`);
   };
   return (
     <>
-      <Header />
       <div className="bg-[#FFA62F] ">
-        <button className="bg-slate-200 mt-2 ml-2 p-2">
-          <Link to="/Index">Go Back</Link>
-        </button>
         <div className="main pb-4 pt-5   w-[100vw] bg-[#FFA62F] flex justify-center items-center">
-          <div className="mt-10 lg:mt-10 formArea bg-white w-[97vw] lg:w-[70vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
+          <div className="mt-10 lg:mt-5 formArea bg-white w-[97vw] lg:w-[70vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
             <div className="header">
               <p className="text-[5vmin] font-bold  mt-2">
-                Please Fill the details for Hiring Letter
+                Please Fill the details for Employee Hiring Letter
               </p>
             </div>
             <form>
@@ -277,28 +328,7 @@ const HiringDocEmployee = () => {
                         }}
                       ></input>
                     </li>
-                    <li>
-                      {" "}
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Enter Duration..."
-                        onChange={(e) => {
-                          setDuration(e.target.value);
-                        }}
-                      ></input>
-                    </li>
-                    <li>
-                      {" "}
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Set Hours needed..."
-                        onChange={(e) => {
-                          setHours(e.target.value);
-                        }}
-                      ></input>
-                    </li>
+
                     <li>
                       Set Category{" "}
                       <select

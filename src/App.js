@@ -7,6 +7,7 @@ import First from "./components/First";
 import FirstLogin from "./components/FirstLogin";
 import HiringDoc from "./components/Hiringdoc";
 import HiringDocEmployee from "./components/HiringDocEmployee";
+import SmallMeeting from "./components/SmallMeeting";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/MoMForm" element={<MoMForm />}></Route>
         <Route path="/HireEmployee" element={<HiringDocEmployee />}></Route>
         <Route path="/HireForm" element={<HiringDoc />}></Route>
+        <Route path="/SmallMeeting" element={<SmallMeeting />}></Route>
         <Route path="/FirstLogin" element={<FirstLogin />}></Route>
       </Routes>
     </BrowserRouter>

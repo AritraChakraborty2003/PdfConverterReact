@@ -1,16 +1,17 @@
 /* eslint-disable no-undef */
-import moment, { duration } from "moment";
+import moment from "moment";
 import { jsPDF } from "jspdf";
 import Header from "./Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import HiringDocEmployee from "./HiringDocEmployee";
 const HiringDoc = () => {
   const [uname, setuname] = useState("");
   const [joiningdate, setJoiningDate] = useState("");
   const [compensation, setCompensation] = useState("");
   const [duration1, setDuration] = useState("");
   const [hours, setHours] = useState("");
-
+  const [letter, setLetter] = useState("intern");
   const getPDF = (e) => {
     e.preventDefault();
     const role = document.getElementById("role").value;
@@ -230,107 +231,133 @@ const HiringDoc = () => {
         <button className="bg-slate-200 mt-2 ml-2 p-2">
           <Link to="/Index">Go Back</Link>
         </button>
-        <div className="main pb-4 pt-5   w-[100vw] bg-[#FFA62F] flex justify-center items-center">
-          <div className="mt-10 lg:mt-10 formArea bg-white w-[97vw] lg:w-[70vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
-            <div className="header">
-              <p className="text-[5vmin] font-bold  mt-2">
-                Please Fill the details for Hiring Letter
-              </p>
-            </div>
-            <form>
-              <div className="mt-10 lg:mt-5 formArea bg-white w-[95vw] lg:w-[50vw]  lg:p-2   flex  justify-center items-center flex-wrap">
-                <div className="left pb-1 w-[97vw]  lg:w-[50vw] ">
-                  <ul className="flex gap-y-4 flex-col">
-                    <li>
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Enter candidate name..."
-                        onChange={(e) => setuname(e.target.value)}
-                      ></input>
-                    </li>
-                    <li>
-                      Candidate Role:
-                      <select
-                        class="role"
-                        id="role"
-                        className="w-11/12 bg-slate-200 p-2 mt-1"
-                      >
-                        <option value="UI/UX">UI/UX</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="Android Development">
-                          Android Development
-                        </option>
-                        <option value="Marketing">Marketing</option>
-                      </select>{" "}
-                    </li>
 
-                    <li>
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Enter Compensation..."
-                        onChange={(e) => {
-                          setCompensation(e.target.value);
-                        }}
-                      ></input>
-                    </li>
-                    <li>
-                      {" "}
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Enter joining date..."
-                        onChange={(e) => {
-                          setJoiningDate(e.target.value);
-                        }}
-                      ></input>
-                    </li>
-                    <li>
-                      {" "}
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Enter Duration..."
-                        onChange={(e) => {
-                          setDuration(e.target.value);
-                        }}
-                      ></input>
-                    </li>
-                    <li>
-                      {" "}
-                      <input
-                        type="text"
-                        className="w-11/12 bg-slate-200 p-2"
-                        placeholder="Set Hours needed..."
-                        onChange={(e) => {
-                          setHours(e.target.value);
-                        }}
-                      ></input>
-                    </li>
-                    <li>
-                      Set Category{" "}
-                      <select
-                        class="category"
-                        id="category"
-                        className="w-11/12 bg-slate-200 p-2 mt-1"
-                      >
-                        <option value="Technical">Technical</option>
-                        <option value="Management">Management</option>
-                      </select>{" "}
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="flex justify-center items-center mt-2">
-                <button className="bg-black text-white p-2" onClick={getPDF}>
-                  Get Report
-                </button>
-              </div>
-            </form>
+        <div className="flex gap-x-4 p-2 mt-3 w-12/12 justify-center items-center">
+          <div
+            className="box1 border-white border-2 p-2 text-white hover:bg-white hover:text-black hover:font-bold"
+            onClick={() => setLetter("intern")}
+          >
+            Intern Letter
+          </div>
+          <div
+            className="box2 border-white border-2 p-2 text-white hover:bg-white hover:text-black hover:font-bold"
+            onClick={() => setLetter("employee")}
+          >
+            Employee Letter
           </div>
         </div>
+        {letter === "intern" ? (
+          <div>
+            <div className="main pb-4 pt-1   w-[100vw] bg-[#FFA62F] flex justify-center items-center">
+              <div className="mt-10 lg:mt-5 formArea bg-white w-[97vw] lg:w-[70vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
+                <div className="header">
+                  <p className="text-[5vmin] font-bold  mt-2">
+                    Please Fill the details for Intern Hiring Letter
+                  </p>
+                </div>
+                <form>
+                  <div className="mt-10 lg:mt-5 formArea bg-white w-[95vw] lg:w-[50vw]  lg:p-2   flex  justify-center items-center flex-wrap">
+                    <div className="left pb-1 w-[97vw]  lg:w-[50vw] ">
+                      <ul className="flex gap-y-4 flex-col">
+                        <li>
+                          <input
+                            type="text"
+                            className="w-11/12 bg-slate-200 p-2"
+                            placeholder="Enter candidate name..."
+                            onChange={(e) => setuname(e.target.value)}
+                          ></input>
+                        </li>
+                        <li>
+                          Candidate Role:
+                          <select
+                            class="role"
+                            id="role"
+                            className="w-11/12 bg-slate-200 p-2 mt-1"
+                          >
+                            <option value="UI/UX">UI/UX</option>
+                            <option value="Web Development">
+                              Web Development
+                            </option>
+                            <option value="Android Development">
+                              Android Development
+                            </option>
+                            <option value="Marketing">Marketing</option>
+                          </select>{" "}
+                        </li>
+
+                        <li>
+                          <input
+                            type="text"
+                            className="w-11/12 bg-slate-200 p-2"
+                            placeholder="Enter Compensation..."
+                            onChange={(e) => {
+                              setCompensation(e.target.value);
+                            }}
+                          ></input>
+                        </li>
+                        <li>
+                          {" "}
+                          <input
+                            type="text"
+                            className="w-11/12 bg-slate-200 p-2"
+                            placeholder="Enter joining date..."
+                            onChange={(e) => {
+                              setJoiningDate(e.target.value);
+                            }}
+                          ></input>
+                        </li>
+                        <li>
+                          {" "}
+                          <input
+                            type="text"
+                            className="w-11/12 bg-slate-200 p-2"
+                            placeholder="Enter Duration..."
+                            onChange={(e) => {
+                              setDuration(e.target.value);
+                            }}
+                          ></input>
+                        </li>
+                        <li>
+                          {" "}
+                          <input
+                            type="text"
+                            className="w-11/12 bg-slate-200 p-2"
+                            placeholder="Set Hours needed..."
+                            onChange={(e) => {
+                              setHours(e.target.value);
+                            }}
+                          ></input>
+                        </li>
+                        <li>
+                          Set Category{" "}
+                          <select
+                            class="category"
+                            id="category"
+                            className="w-11/12 bg-slate-200 p-2 mt-1"
+                          >
+                            <option value="Technical">Technical</option>
+                            <option value="Management">Management</option>
+                          </select>{" "}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center items-center mt-2">
+                    <button
+                      className="bg-black text-white p-2"
+                      onClick={getPDF}
+                    >
+                      Get Report
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <HiringDocEmployee />
+        )}
       </div>
     </>
   );
