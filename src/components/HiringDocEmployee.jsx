@@ -1,10 +1,9 @@
-/* eslint-disable no-undef */
 import moment, { duration } from "moment";
 import { jsPDF } from "jspdf";
 import Header from "./Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const HiringDoc = () => {
+const HiringDocEmployee = () => {
   const [uname, setuname] = useState("");
   const [joiningdate, setJoiningDate] = useState("");
   const [compensation, setCompensation] = useState("");
@@ -29,7 +28,7 @@ const HiringDoc = () => {
     doc.setFont("serif", "normal");
     doc.setFontSize(12);
     doc.text(
-      `We the Venture Linked Team is delighted to extend you the offer of ${role} intern in our firm, `,
+      `We the Venture Linked Team is delighted to extend you the offer of ${role}  in our firm, `,
       20,
       37
     );
@@ -38,7 +37,7 @@ const HiringDoc = () => {
       20,
       44
     );
-    if (role === "UI/UX") {
+    if (role === "UI/UX Designer") {
       doc.text(
         `startup grow.Your skills are really very impressive and the portfolio you developed is really very`,
         20,
@@ -50,7 +49,7 @@ const HiringDoc = () => {
         58
       );
     }
-    if (role === "Web Development" || role === "Android Development") {
+    if (role === "Web Developer" || role === "Android Developer") {
       doc.text(
         `startup grow.Your skills are really very impressive and the projects you developed is really very`,
         20,
@@ -62,7 +61,7 @@ const HiringDoc = () => {
         58
       );
     }
-    if (role === "Marketing") {
+    if (role === "Marketing" || role === "Accountant") {
       doc.text(
         `startup grow.Your skills are really very impressive and the experience you gained is really very`,
         20,
@@ -80,7 +79,7 @@ const HiringDoc = () => {
       20,
       64
     );
-    doc.text(`1. Position: ${role} Intern`, 20, 71);
+    doc.text(`1. Position: ${role}`, 20, 71);
     doc.text(`2. mode: Online`, 20, 81);
     doc.text(`3. Compensation: ${compensation}`, 20, 91);
     if (category === "Technical") {
@@ -97,12 +96,10 @@ const HiringDoc = () => {
       );
     }
     doc.text(`5. Joining Date: ${joiningdate}`, 20, 111);
-    doc.text(`6. Timing : Flexible`, 20, 121);
-    doc.text(`7. Hours Neeed : ${hours} hours/week(5 days week)`, 20, 131);
-    doc.text(`8. Duration : ${duration1} months`, 20, 141);
+    doc.text(`6. Timing : 9.00 AM - 5.00 PM (5 days week)`, 20, 121);
     doc.setFont("serif", "normal");
     doc.text(
-      `The main roles & responsibilites for the ${role} intern role are:-`,
+      `The main roles & responsibilites for the ${role}  role are:-`,
       20,
       151
     );
@@ -114,12 +111,12 @@ const HiringDoc = () => {
         161
       );
       doc.text(
-        `2. Communicating with the team as per project requirements`,
+        `2. Communicating with the intern and management team as per project requirements`,
         20,
         171
       );
       doc.text(
-        `3. Developing robust APIs and integrating its data in the frontend as per the need`,
+        `3. Develop robust APIs,updating features,resolve issues,testing,Code review of interns in the team`,
         20,
         181
       );
@@ -138,17 +135,17 @@ const HiringDoc = () => {
         161
       );
       doc.text(
-        `2. Communicating with the team as per project requirements`,
+        `2. Communicating with the team and management as per project requirements`,
         20,
         171
       );
       doc.text(
-        `3. Integrating APIs with android application using its Libraries and display data in recyclerView`,
+        `3. Integrating APIs,training and mentoring interns,work on updates as needed in the project`,
         20,
         181
       );
       doc.text(
-        `4. Working primarily on java and creating nice looking UI of VentureLink app using XML`,
+        `4. Manage techical Documentation, Review code,perform testing and handle deployment needs`,
         20,
         191
       );
@@ -158,12 +155,12 @@ const HiringDoc = () => {
       doc.setFont("serif", "normal");
       doc.text(`1. Managing day to day UI/UX updates as per needs.`, 20, 161);
       doc.text(
-        `2. Communicating with team as per project requirements`,
+        `2. Communicating with team  and management as per project requirements`,
         20,
         171
       );
       doc.text(
-        `3. Developing creative and attractive posts,banners,UI components as per need`,
+        `3. Developing creative and attractive posts,banners,UI components as per need training UI/UX interns`,
         20,
         181
       );
@@ -180,32 +177,23 @@ const HiringDoc = () => {
         20,
         161
       );
-      doc.text(`2. Communicating with team as per requirements`, 20, 171);
+      doc.text(
+        `2. Communicating with team and management as per requirements`,
+        20,
+        171
+      );
       doc.text(
         `3. Running and managing ads on social media platform for gaining users in the application`,
         20,
         181
       );
       doc.text(
-        `4. Regularly posting on social media platform making discussion with UI/UX team.`,
+        `4. Regularly posting on social media platform making discussion with UI/UX team and interns.`,
         20,
         191
       );
     }
 
-    doc.text(
-      `This internship will not only help you to boost your skills but also have multiple benefits which are:`,
-      20,
-      201
-    );
-    doc.text(`1. Letter of recommendation`, 20, 211);
-    doc.text(`2. Internship Certificate `, 20, 221);
-    doc.text(`3. Flexible work Hours`, 20, 231);
-    doc.text(
-      `4. For full-time jobs priority will be given to top performing interns `,
-      20,
-      241
-    );
     doc.setFont("serif", "normal");
     doc.setFontSize(12);
     if (category === "Technical") {
@@ -256,12 +244,15 @@ const HiringDoc = () => {
                         id="role"
                         className="w-11/12 bg-slate-200 p-2 mt-1"
                       >
-                        <option value="UI/UX">UI/UX</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="Android Development">
-                          Android Development
+                        <option value="UI/UX Designer">UI/UX Designer</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="Android Developer">
+                          Android Developer
                         </option>
-                        <option value="Marketing">Marketing</option>
+                        <option value="Marketing Executive">
+                          Marketing Executive
+                        </option>
+                        <option value="Accountant">Accountant</option>
                       </select>{" "}
                     </li>
 
@@ -335,4 +326,4 @@ const HiringDoc = () => {
     </>
   );
 };
-export default HiringDoc;
+export default HiringDocEmployee;
