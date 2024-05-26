@@ -8,6 +8,7 @@ import FirstLogin from "./components/FirstLogin";
 import HiringDoc from "./components/Hiringdoc";
 import HiringDocEmployee from "./components/HiringDocEmployee";
 import SmallMeeting from "./components/SmallMeeting";
+import NoticePage from "./components/NoticePage";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<First />}></Route>
         <Route path="/Index" element={<Index />}></Route>
         <Route path="/Header" element={<Header />}></Route>
+        <Route path="/NoticePage" element={<NoticePage />}></Route>
         <Route path="/Footer" element={<Footer />}></Route>
         <Route path="/MoMForm" element={<MoMForm />}></Route>
         <Route path="/HireEmployee" element={<HiringDocEmployee />}></Route>
