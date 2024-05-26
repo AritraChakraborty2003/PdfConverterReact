@@ -191,7 +191,7 @@ const MoMForm = () => {
         </div>
         {MoM === "main" ? (
           <div className="main pb-4 pt-3  w-[100vw] bg-[#FFA62F] flex justify-center items-center">
-            <div className="mt-4 lg:mt-14 formArea bg-white w-[97vw] lg:w-[90vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
+            <div className="mt-4 lg:mt-5 formArea bg-white w-[97vw] lg:w-[90vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
               <div className="header">
                 <p className="text-[5vmin] font-bold  mt-2">
                   Please Fill the details for MoM report

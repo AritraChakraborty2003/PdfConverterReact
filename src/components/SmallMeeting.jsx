@@ -94,7 +94,7 @@ const SmallMeeting = () => {
           <div className="mt-4 lg:mt-2 formArea bg-white w-[97vw] lg:w-[90vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
             <div className="header">
               <p className="text-[5vmin] font-bold  mt-2">
-                Please Fill the details for Daily Meet
+                Please Fill the details for Daily Meet MoM
               </p>
             </div>
             <form>
