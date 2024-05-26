@@ -9,6 +9,7 @@ import HiringDoc from "./components/Hiringdoc";
 import HiringDocEmployee from "./components/HiringDocEmployee";
 import SmallMeeting from "./components/SmallMeeting";
 import NoticePage from "./components/NoticePage";
+import TerminatePage from "./components/TerminatePage";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,8 @@ function App() {
         <Route path="/NoticePage" element={<NoticePage />}></Route>
         <Route path="/Footer" element={<Footer />}></Route>
         <Route path="/MoMForm" element={<MoMForm />}></Route>
+
+        <Route path="/TerminatePage" element={<TerminatePage />}></Route>
         <Route path="/HireEmployee" element={<HiringDocEmployee />}></Route>
         <Route path="/HireForm" element={<HiringDoc />}></Route>
         <Route path="/SmallMeeting" element={<SmallMeeting />}></Route>
