@@ -5,6 +5,7 @@ import Header from "./Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import HiringDocEmployee from "./HiringDocEmployee";
+import PartTime from "./PartTime";
 const HiringDoc = () => {
   const [uname, setuname] = useState("");
   const [joiningdate, setJoiningDate] = useState("");
@@ -231,7 +232,6 @@ const HiringDoc = () => {
         <button className="bg-slate-200 mt-2 ml-2 p-2">
           <Link to="/Index">Go Back</Link>
         </button>
-
         <div className="flex gap-x-4 p-2 mt-3 w-12/12 justify-center items-center">
           <div
             className="box1 border-white border-2 p-2 text-white hover:bg-white hover:text-black hover:font-bold"
@@ -245,8 +245,14 @@ const HiringDoc = () => {
           >
             Employee Letter
           </div>
+          <div
+            className="box2 border-white border-2 p-2 text-white hover:bg-white hover:text-black hover:font-bold"
+            onClick={() => setLetter("partTime")}
+          >
+            PartTime
+          </div>
         </div>
-        {letter === "intern" ? (
+        {letter === "intern" && (
           <div>
             <div className="main pb-4 pt-1   w-[100vw] bg-[#FFA62F] flex justify-center items-center">
               <div className="mt-10 lg:mt-5 formArea bg-white w-[97vw] lg:w-[70vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
@@ -355,9 +361,9 @@ const HiringDoc = () => {
               </div>
             </div>
           </div>
-        ) : (
-          <HiringDocEmployee />
         )}
+        {letter === "employee" && <HiringDocEmployee />}
+        {letter === "partTime" && <PartTime />}
       </div>
     </>
   );

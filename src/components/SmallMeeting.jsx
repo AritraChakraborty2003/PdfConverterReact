@@ -26,7 +26,8 @@ const SmallMeeting = () => {
   const [agenda3p1, setAgenda3P1] = useState("");
   const [agenda3p2, setAgenda3P2] = useState("");
   const [agenda3p3, setAgenda3P3] = useState("");
-  const getPDF = () => {
+  const getPDF = (e) => {
+    e.preventDefault();
     const doc = new jsPDF("p", "px", [400, 400]); //Small Size for small meeting
     doc.setFont("serif", "bold");
     doc.setFontSize(35);
