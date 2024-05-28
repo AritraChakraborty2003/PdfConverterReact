@@ -20,7 +20,6 @@ function App() {
         <Route path="/NoticePage" element={<NoticePage />}></Route>
         <Route path="/Footer" element={<Footer />}></Route>
         <Route path="/MoMForm" element={<MoMForm />}></Route>
-
         <Route path="/TerminatePage" element={<TerminatePage />}></Route>
         <Route path="/HireEmployee" element={<HiringDocEmployee />}></Route>
         <Route path="/HireForm" element={<HiringDoc />}></Route>

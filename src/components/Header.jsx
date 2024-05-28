@@ -7,7 +7,7 @@ const Header = () => {
   const [notHidden, setnotHidden] = useState(false);
   return (
     <>
-      <div className="w-full h-[15vmin] md:h-[10vmin] bg-black text-white flex overflow-hidden">
+      <div className="w-full h-[15vmin] md:h-[10vmin] bg-black text-white flex overflow-hidden pb-2">
         <div className="iconHolder h-[15vmin] md:h-[10vmin] flex items-center space-x-4 ">
           <h1 className="font-extrabold text-2xl ml-4">
             <Link to="/">LV</Link>
@@ -16,11 +16,11 @@ const Header = () => {
             <Link to="/">VentureLink Utility</Link>
           </p>
         </div>
-        <div className="iconHolder  w-[29vw] md:w-[63vw] lg:w-[50vw] 2xl:w-[57vw] flex items-center "></div>
+        <div className="iconHolder  w-[29vw] md:w-[63vw] lg:w-[50vw] 2xl:w-[57vw] flex items-center"></div>
         <div className="hidden lg:block">
           {(screen.width <= 1700 && (
             <>
-              <div className="iconHolder h-16 flex items-center space-x-7 text-xl font-medium">
+              <div className="iconHolder h-[8.4vmin] flex items-center space-x-7 text-xl font-medium ">
                 <p>
                   <Link to="/FirstLogin">Login</Link>
                 </p>
@@ -29,7 +29,7 @@ const Header = () => {
               </div>
             </>
           )) || (
-            <div className="iconHolder h-[10vmin] flex items-center space-x-12 text-2xl font-medium">
+            <div className="iconHolder h-[10vmin] flex items-center space-x-12 text-2xl font-medium pb-2">
               <p>Login</p>
               <p>Main-Website</p>
               <p>Rules Page</p>
