@@ -7,6 +7,8 @@ import HiringDocEmployee from "./HiringDocEmployee";
 import PartTime from "./PartTime";
 
 const NoticePage = () => {
+  const [subject, setsubject] = useState("");
+  const [notice, setNotice] = useState("");
   const getPDF = () => {
     const doc = new jsPDF("p", "px", [450, 450]);
     doc.setFont("sans", "bold");
@@ -113,10 +115,47 @@ const NoticePage = () => {
   return (
     <>
       <Header />
-      <p>This is notice page</p>
-      <button onClick={getPDF} className="bg-black text-white">
-        Get Pdf
-      </button>
+      <div className="bg-[#FFA62F] ">
+        <div className="main pb-4 pt-3 h-[calc(100vh-15vmin)] lg:h-[calc(100vh-10vmin)]  w-[100vw] bg-[#FFA62F] flex justify-center items-center">
+          <form>
+            <div className="mt-10 lg:mt-5 formArea bg-white w-[95vw] lg:w-[50vw]  lg:p-2   flex  justify-center items-center flex-wrap">
+              <div className="header">
+                <p className="text-[4vmin] font-bold  mt-2">
+                  Please fill the details for notice
+                </p>
+              </div>
+              <div className="mt-7 left pb-1 w-[97vw]  lg:w-[50vw] ">
+                <ul className="flex gap-y-4 flex-col">
+                  <li>
+                    <input
+                      type="text"
+                      className="w-11/12 bg-slate-200 p-2"
+                      placeholder="Enter subject of notice..."
+                      onChange={(e) => setsubject(e.target.value)}
+                    ></input>
+                  </li>
+                  <li>
+                    {" "}
+                    <input
+                      type="text"
+                      className="w-11/12 bg-slate-200 p-2"
+                      placeholder="Set Notice body..."
+                      onChange={(e) => {
+                        setNotice(e.target.value);
+                      }}
+                    ></input>
+                  </li>
+                </ul>
+              </div>
+              <div className="flex justify-center items-center mt-2">
+                <button onClick={getPDF} className="bg-black text-white p-2">
+                  Get Pdf
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
