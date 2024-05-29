@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <>
       {(((data.length === 0 && localStorage.getItem("user") === "adminU1") ||
-        localStorage.getItem("user") === "adminU3") && (
+        (data.length === 0 && localStorage.getItem("user") === "adminU3")) && (
         <>
           <div className="overflow-y-hidden">
             <Header />
@@ -106,7 +106,7 @@ const Index = () => {
                   </p>
                 </div>
                 <div className="cardMain flex justify-center items-center gap-x-2 lg:gap-x-4  lg:gap-y-0 flex-wrap ">
-                  {data.slice(0, 5).map((val) => (
+                  {data.slice(0, 6).map((val) => (
                     <>
                       <div className="cardHolder mt-5 p-4  w-[45vmin] lg:w-[50vmin] bg-[#ffffff] shadow-2xl flex flex-col justify-center items-center">
                         <div className="card h-[25vmin] w-[40vmin] ">

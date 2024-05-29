@@ -103,7 +103,7 @@ const NoticePage = () => {
 
     doc.text("Mr. Aritra Chakraborty", 360, 430);
 
-    doc.text("(Managing Partener)", 40, 440);
+    doc.text("(Managing Partner)", 40, 440);
 
     doc.text("(Management Head)", 200, 440);
 
