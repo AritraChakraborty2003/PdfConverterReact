@@ -90,7 +90,7 @@ const SmallMeeting = () => {
   };
   return (
     <>
-      <div className="bg-[#FFA62F] h-[calc(100vh-15vmin)] g:h-[calc(100vh-10vmin)">
+      <div className="bg-[#FFA62F]">
         <div className="main pb-4 pt-3 lg:h-[100vh]  w-[100vw] bg-[#FFA62F] flex justify-center items-center">
           <div className="mt-4 lg:mt-2 formArea bg-white w-[97vw] lg:w-[90vw]  p-2  lg:pt-7 flex flex-col justify-center items-center flex-wrap rounded-2xl">
             <div className="header">
