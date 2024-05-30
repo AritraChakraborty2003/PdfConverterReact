@@ -31,19 +31,22 @@ const NoticePage = () => {
     );
     doc.setFont("sans", "bold");
     doc.setFontSize(13);
-    doc.text("Notice no: N2401", 37, 95);
+    doc.text("Notice no: N2401", 19, 95);
     doc.setFont("sans", "bold");
     doc.setFontSize(31);
     doc.text("NOTICE", 170, 120);
     doc.setFont("sans", "normal");
     doc.setFontSize(12);
-    doc.text(`Subject: ${subject}`, 35, 142);
-    doc.text("Dear Members,", 35, 164);
+    doc.text(`Subject: ${subject}`, 19, 142);
+    doc.text("Dear Members,", 19, 164);
     let pos = 183;
     let arr = notice.split("");
     console.log(arr);
-    for (let i = 0; i < arr.length; i += 116) {
-      doc.text(`${arr.slice(i, i + 116).join("")}`, 35, pos);
+    for (let i = 0; i < arr.length; i += 120) {
+      if (arr[i] === " ") {
+        arr[i] = "";
+      }
+      doc.text(`${arr.slice(i, i + 120).join("")}`, 19, pos);
       pos += 14;
     }
     /*
