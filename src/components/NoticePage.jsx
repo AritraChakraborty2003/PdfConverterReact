@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 import moment from "moment";
 import jsPDF from "jspdf";
 import Header from "./Header";
@@ -9,8 +10,9 @@ import PartTime from "./PartTime";
 const NoticePage = () => {
   const [subject, setsubject] = useState("");
   const [notice, setNotice] = useState("");
-  const getPDF = () => {
-    const doc = new jsPDF("p", "px", [450, 450]);
+  const getPDF = (e) => {
+    e.preventDefault();
+    const doc = new jsPDF("p", "px", [480, 480]);
     doc.setFont("sans", "bold");
     doc.setFontSize(40);
     doc.text("Venture Linked", 127, 27);
@@ -19,12 +21,12 @@ const NoticePage = () => {
     doc.text("( Connecting startups revolutionizing technologies )", 130, 39);
     doc.setLineWidth(1);
 
-    doc.line(50, 45, 400, 45);
+    doc.line(47, 45, 425, 45);
 
     doc.setFontSize(10);
     doc.text(
       "Phone no: 7585824862 || email: aritra.chakraborty@gmail.com || address: IIMT-LBF Incubation Center,Greater Noida,UP",
-      40,
+      50,
       55
     );
     doc.setFont("sans", "bold");
@@ -32,20 +34,19 @@ const NoticePage = () => {
     doc.text("Notice no: N2401", 37, 95);
     doc.setFont("sans", "bold");
     doc.setFontSize(31);
-    doc.text("NOTICE", 169, 120);
+    doc.text("NOTICE", 170, 120);
     doc.setFont("sans", "normal");
     doc.setFontSize(12);
-    doc.text(
-      "Subject: An example of subject of notice in 20 words which is to be given in every notice of meeting",
-      35,
-      142
-    );
-    doc.text("Dear Members,", 40, 164);
-    doc.text(
-      "An example of subject of notice in 20 words which is to be given in every notice of meeting",
-      40,
-      178
-    );
+    doc.text(`Subject: ${subject}`, 35, 142);
+    doc.text("Dear Members,", 35, 164);
+    let pos = 183;
+    let arr = notice.split("");
+    console.log(arr);
+    for (let i = 0; i < arr.length; i += 116) {
+      doc.text(`${arr.slice(i, i + 116).join("")}`, 35, pos);
+      pos += 14;
+    }
+    /*
     doc.text(
       "An example of subject of notice in 20 words which is to be given in every notice of meeting",
       40,
@@ -96,6 +97,7 @@ const NoticePage = () => {
       40,
       318
     );
+    */
     doc.setFont("sans", "normal");
     doc.setFontSize(10);
 
@@ -125,7 +127,7 @@ const NoticePage = () => {
                 </p>
               </div>
               <div className="mt-7 left pb-1 w-[97vw]  lg:w-[50vw] ">
-                <ul className="flex gap-y-4 flex-col">
+                <ul className="flex gap-y-4 flex-col ml-5">
                   <li>
                     <input
                       type="text"
@@ -136,14 +138,14 @@ const NoticePage = () => {
                   </li>
                   <li>
                     {" "}
-                    <input
-                      type="text"
-                      className="w-11/12 bg-slate-200 p-2"
+                    <textarea
+                      className="w-11/12 bg-slate-200 p-2 "
                       placeholder="Set Notice body..."
+                      rows="5"
                       onChange={(e) => {
                         setNotice(e.target.value);
                       }}
-                    ></input>
+                    ></textarea>
                   </li>
                 </ul>
               </div>
