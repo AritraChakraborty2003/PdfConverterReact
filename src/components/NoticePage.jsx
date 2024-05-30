@@ -10,6 +10,7 @@ import PartTime from "./PartTime";
 const NoticePage = () => {
   const [subject, setsubject] = useState("");
   const [notice, setNotice] = useState("");
+  const [meet, setmeet] = useState("");
   const getPDF = (e) => {
     e.preventDefault();
     const doc = new jsPDF("p", "px", [480, 480]);
@@ -121,7 +122,24 @@ const NoticePage = () => {
     <>
       <Header />
       <div className="bg-[#FFA62F] ">
-        <div className="main pb-4 pt-3 h-[calc(100vh-15vmin)] lg:h-[calc(100vh-10vmin)]  w-[100vw] bg-[#FFA62F] flex justify-center items-center">
+        <button className="bg-slate-200 mt-2 ml-2 p-2">
+          <Link to="/Index">Go Back</Link>
+        </button>
+        <div className="flex gap-x-4 p-2 mt-3 w-12/12 justify-center items-center">
+          <div
+            className="box1 border-white border-2 p-2 text-white hover:bg-white hover:text-black hover:font-bold"
+            onClick={() => setmeet("general")}
+          >
+            General Notice
+          </div>
+          <div
+            className="box2 border-white border-2 p-2 text-white hover:bg-white hover:text-black hover:font-bold"
+            onClick={() => setmeet("rules")}
+          >
+            Rules Notice
+          </div>
+        </div>
+        <div className="main pb-4 pt-3  w-[100vw] bg-[#FFA62F] flex justify-center items-center">
           <form>
             <div className="mt-10 lg:mt-5 formArea bg-white w-[95vw] lg:w-[50vw]  lg:p-2   flex  justify-center items-center flex-wrap">
               <div className="header">
