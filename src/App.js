@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import MoMForm from "./components/MoMForm";
 import First from "./components/First";
 import FirstLogin from "./components/FirstLogin";
+import TechnicalDoc from "./components/TechnicalDoc";
 import HiringDoc from "./components/Hiringdoc";
 import HiringDocEmployee from "./components/HiringDocEmployee";
 import SmallMeeting from "./components/SmallMeeting";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/HireForm" element={<HiringDoc />}></Route>
         <Route path="/SmallMeeting" element={<SmallMeeting />}></Route>
         <Route path="/FirstLogin" element={<FirstLogin />}></Route>
+        <Route path="/technicalDoc" element={<TechnicalDoc />}></Route>
       </Routes>
     </BrowserRouter>
   );
