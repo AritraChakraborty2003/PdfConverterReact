@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Index from "./components/Index";
 import Footer from "./components/Footer";
 import MoMForm from "./components/MoMForm";
+import UiDoc from "./components/UiDoc";
 import First from "./components/First";
 import FirstLogin from "./components/FirstLogin";
 import TechnicalDoc from "./components/TechnicalDoc";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/HireForm" element={<HiringDoc />}></Route>
         <Route path="/SmallMeeting" element={<SmallMeeting />}></Route>
         <Route path="/FirstLogin" element={<FirstLogin />}></Route>
+        <Route path="/Uidoc" element={<UiDoc />}></Route>
         <Route path="/technicalDoc" element={<TechnicalDoc />}></Route>
       </Routes>
     </BrowserRouter>
