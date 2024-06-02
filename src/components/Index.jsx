@@ -55,10 +55,10 @@ const Index = () => {
                     (The ultimate place for all your utility needs)
                   </p>
                 </div>
-                <div className="cardMain flex justify-center items-center gap-x-2 lg:gap-x-4  lg:gap-y-0 flex-wrap ">
+                <div className="cardMain flex justify-center items-center gap-x-2 lg:gap-x-2  lg:gap-y-0 flex-wrap ">
                   {data.map((val) => (
                     <>
-                      <div className="cardHolder mt-5 p-4  w-[45vmin] lg:w-[50vmin] bg-[#ffffff] shadow-2xl flex flex-col justify-center items-center">
+                      <div className="cardHolder mt-5 p-4  w-[45vmin] lg:w-[40vmin] bg-[#ffffff] shadow-2xl flex flex-col justify-center items-center">
                         <div className="card h-[25vmin] w-[40vmin] ">
                           <div className="h-[21vmin] w-[40vmin] flex flex-col justify-center items-center  ">
                             <img
